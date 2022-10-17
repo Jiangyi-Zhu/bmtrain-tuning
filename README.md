@@ -15,11 +15,12 @@
   用roberta-base试验adapter层数增加时反而会overflow，怀疑adapter的设置有问题，但检查过加载模型和加载adapter的代码，没有发现问题
 7. 调整adapter初始化：尝试了adapter论文中的初始化设置(中间层数8，64，256，standard deviation:1e-2,1e-7)，或自己调了不同的std，没有改善。
 8. adapter的数据格式没有转换成fp16：统一完数据格式以后可以让网络多跑几个epoch
-
+ 
 bmtrain-fp16 log文件：
 1. xlm模型
     如果adapter layer 只有6层，prompt layer只有5层，能跑1个epoch
     其他layer组合（adapter:32,64,128,256, prompt:50,100,200,400）都会在几百步报错
 2. roberta模型
     如果adapter layer 只有6层，prompt layer只有5层，能跑完20个epoch，loss为1.3
+3. roberta模型
     如果adapter layer 有256层，prompt layer有400层， 能跑3个eopch，然后报错。但是loss为1.2
