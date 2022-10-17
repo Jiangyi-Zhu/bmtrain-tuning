@@ -1,4 +1,8 @@
 # bmtrain-tuning debug
+
+主要代码为adapter_bmtrain_prompt.py，
+部分初始化设置在run_tuning.sh
+
 1. 问题描述
 在训练分类数量较多的下游任务时，xlm-roberta-base模型训练开始或者过程中会报gradient overflow的错误。
 出现问题的数据集：emoevent（8分类）、GoEmotions（28分类）
